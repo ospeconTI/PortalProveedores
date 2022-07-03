@@ -11,7 +11,8 @@ import { check } from "@brunomon/template-lit/src/views/css/check";
 import { button } from "@brunomon/template-lit/src/views/css/button";
 import { SpinnerControl } from "./spinner";
 import { AlertControl } from "./alert";
-import { showAlert } from "../../redux/ui/actions";
+import { ConfirmControl } from "./confirm";
+import { showAlert, showConfirm } from "../../redux/ui/actions";
 import { showSpinner } from "../../redux/api/actions";
 
 export class formTest extends connect(store)(LitElement) {
@@ -182,9 +183,9 @@ export class formTest extends connect(store)(LitElement) {
                     <button link>LINK</button>
                     <button link action>LINK ACTION</button>
                     <button link disabled>LINK DISABLED</button>
-                    <div class="inner-grid">
-                        <button link @click="${this.openDialog}">OPEN DIALOG</button>
-                    </div>
+
+                    <button link @click="${this.openAlert}">ABRIR ALERT</button>
+                    <button link @click="${this.openConfirm}">ABRIR CONFIRM</button>
                 </div>
             </div>
             <div class="grid fit10">
@@ -222,6 +223,7 @@ export class formTest extends connect(store)(LitElement) {
                 </div>
             </div>
             <alert-control></alert-control>
+            <confirm-control></confirm-control>
         `;
     }
 
@@ -233,12 +235,31 @@ export class formTest extends connect(store)(LitElement) {
         this.requestUpdate();
     }
 
-    openDialog() {
+    openAlert() {
         store.dispatch(
             showAlert(
-                html`<p>Este es el titulo</p>`,
+                "Este es el titulo",
                 html`<p>Normalmente con un mensaje</p>
                     <p>de uno o mas renglones</p>`
+            )
+        );
+    }
+    openConfirm() {
+        store.dispatch(
+            showConfirm(
+                "Titulo del Confirm",
+                html`<p>Esto es una prueba...</p>
+                    <p>¿ quiere abrir un alert ?</p>`,
+                showAlert(
+                    "Confirmado",
+                    html`<p>La accion de confirmacion</p>
+                        <p>se disparo con exito</p>`
+                ),
+                showAlert(
+                    "NO Confirmado",
+                    html`<p>La accion de NO confirmacion</p>
+                        <p>se disparo con exito</p>`
+                )
             )
         );
     }

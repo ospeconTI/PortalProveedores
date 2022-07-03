@@ -16,8 +16,8 @@ export const SELECTION = "[ui] selection";
 
 export const STEP = "[ui] step";
 
-//oculta o muestra ventana de error
 export const SHOW_ALERT = "[ui] show alert";
+export const SHOW_CONFIRM = "[ui] show confirm";
 
 export const showSpinner = () => ({
     type: SHOW_SPINNER,
@@ -38,6 +38,13 @@ export const showAlert = (titulo = "Atencion", mensaje = "Sin mensaje") => ({
     type: SHOW_ALERT,
     titulo: titulo,
     mensaje: mensaje,
+});
+export const showConfirm = (titulo = "Atencion", mensaje = "Sin mensaje", onOk = null, onCancel = null) => ({
+    type: SHOW_CONFIRM,
+    titulo: titulo,
+    mensaje: mensaje,
+    onOk: onOk,
+    onCancel: onCancel,
 });
 export const captureMedia = () => ({
     type: CAPTURE_MEDIA,

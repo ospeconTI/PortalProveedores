@@ -1,6 +1,6 @@
 /** @format */
 
-import { SHOW_SPINNER, HIDE_SPINNER, SHOW_ERROR, HIDE_ERROR, SET_MEDIA, SET_MEDIA_ORIENTATION, SELECTION, STEP, SHOW_ALERT } from "./actions";
+import { SHOW_SPINNER, HIDE_SPINNER, SHOW_ERROR, HIDE_ERROR, SET_MEDIA, SET_MEDIA_ORIENTATION, SELECTION, STEP, SHOW_ALERT, SHOW_CONFIRM } from "./actions";
 
 const initialState = {
     spinner: {
@@ -24,6 +24,13 @@ const initialState = {
         timeStamp: null,
         titulo: null,
         mensaje: null,
+    },
+    confirm: {
+        timeStamp: null,
+        titulo: null,
+        mensaje: null,
+        onOk: null,
+        onCancel: null,
     },
     loginOk: false,
     steps: {
@@ -67,6 +74,13 @@ export const reducer = (state = initialState, action) => {
             newState.alert.timeStamp = new Date().getTime();
             newState.alert.titulo = action.titulo;
             newState.alert.mensaje = action.mensaje;
+            break;
+        case SHOW_CONFIRM:
+            newState.confirm.timeStamp = new Date().getTime();
+            newState.confirm.titulo = action.titulo;
+            newState.confirm.mensaje = action.mensaje;
+            newState.confirm.onOk = action.onOk;
+            newState.confirm.onCancel = action.onCancel;
             break;
         case STEP:
             newState.steps.step = action.step;

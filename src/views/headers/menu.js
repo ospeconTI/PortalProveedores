@@ -12,12 +12,14 @@ import { button } from "@brunomon/template-lit/src/views/css/button";
 import { MENU, RIGHT, PERSON } from "../../../assets/icons/svgs";
 import { logout } from "../../redux/autorizacion/actions";
 import { gesturesController } from "@brunomon/template-lit/src/views/controllers/gesturesController";
+import { selection } from "../../redux/ui/actions";
 
 const MEDIA_CHANGE = "ui.media.timeStamp";
+const SELECTION = "ui.menu.timeStamp";
 const SCREEN = "screen.timeStamp";
 const USUARIO = "autorizacion.loginTimeStamp";
 
-export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)(LitElement) {
+export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO, SELECTION)(LitElement) {
     constructor() {
         super();
         this.area = "header";
@@ -179,7 +181,9 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
             </div>
         `;
     }
-
+    isSelected(e) {
+        return true;
+    }
     gestos(e) {
         if (this.mediaSize != "large") {
             if (e.detail.ACTION == "move") {
@@ -215,6 +219,7 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO)
         this.selectedOption = new Array(this.optionsCount).fill(false);
         this.selectedOption[Array.from(e.currentTarget.parentNode.children).indexOf(e.currentTarget) - 1] = true;
 
+        store.dispatch(selection(e.currentTarget.option));
         store.dispatch(goTo(e.currentTarget.option));
     }
 
