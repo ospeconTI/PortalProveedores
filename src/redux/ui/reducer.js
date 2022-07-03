@@ -1,6 +1,6 @@
 /** @format */
 
-import { SHOW_SPINNER, HIDE_SPINNER, SHOW_ERROR, HIDE_ERROR, SET_MEDIA, SET_MEDIA_ORIENTATION, SELECTION, VELO, VER_PANTALLA_LOGIN, VER_PANTALLA_MIEMBRO, VER_PANTALLA_CAMBIO_CLAVE, VER_PANTALLA_PASES, VER_PANTALLA_CAMBIO_ADMINISTRADOR, VER_PANTALLA_CAMBIO_NOMBRE_CUENTA, VER_PANTALLA_USUARIO_ASIGNAR, SHOW_WARNING, HIDE_WARNING, STEP } from "./actions";
+import { SHOW_SPINNER, HIDE_SPINNER, SHOW_ERROR, HIDE_ERROR, SET_MEDIA, SET_MEDIA_ORIENTATION, SELECTION, STEP, SHOW_ALERT } from "./actions";
 
 const initialState = {
     spinner: {
@@ -20,13 +20,10 @@ const initialState = {
         option: "",
     },
 
-    warning: {
-        pagina: "",
-        nroWarning: -1,
-        backgroundColor: "fondoInformacion",
+    alert: {
         timeStamp: null,
-        hidden: true,
-        tineOut: 1500,
+        titulo: null,
+        mensaje: null,
     },
     loginOk: false,
     steps: {
@@ -66,20 +63,10 @@ export const reducer = (state = initialState, action) => {
             newState.menu.timeStamp = new Date().getTime();
             newState.menu.option = action.option;
             break;
-        case SHOW_WARNING:
-            newState.warning.timeStamp = new Date().getTime();
-            newState.warning.pagina = action.pagina;
-            newState.warning.backgroundColor = action.backgroundColor;
-            newState.warning.nroWarning = action.nroWarning;
-            newState.warning.hidden = false;
-            newState.warning.timeOut = action.timeOut;
-            break;
-        case HIDE_WARNING:
-            newState.warning.timeStamp = new Date().getTime();
-            newState.warning.pagina = "";
-            newState.warning.nroWarning = -1;
-            newState.warning.hidden = true;
-            newState.warning.timeOut = 1500;
+        case SHOW_ALERT:
+            newState.alert.timeStamp = new Date().getTime();
+            newState.alert.titulo = action.titulo;
+            newState.alert.mensaje = action.mensaje;
             break;
         case STEP:
             newState.steps.step = action.step;

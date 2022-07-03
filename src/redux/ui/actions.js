@@ -1,6 +1,5 @@
 /** @format */
 
-//Oculta o muestra spinner
 export const SHOW_SPINNER = "[ui] show spinner";
 export const HIDE_SPINNER = "[ui] hide spinner";
 
@@ -18,8 +17,7 @@ export const SELECTION = "[ui] selection";
 export const STEP = "[ui] step";
 
 //oculta o muestra ventana de error
-export const SHOW_WARNING = "[ui] show warning";
-export const HIDE_WARNING = "[ui] hide warning";
+export const SHOW_ALERT = "[ui] show alert";
 
 export const showSpinner = () => ({
     type: SHOW_SPINNER,
@@ -36,17 +34,11 @@ export const hideError = () => ({
     type: HIDE_ERROR,
 });
 
-export const showWarning = (pagina = "", nroWarning = -1, backgroundColor = "fondoInformacion", timeOut = 1500) => ({
-    type: SHOW_WARNING,
-    pagina: pagina,
-    nroWarning: nroWarning,
-    backgroundColor: backgroundColor,
-    timeOut: timeOut,
+export const showAlert = (titulo = "Atencion", mensaje = "Sin mensaje") => ({
+    type: SHOW_ALERT,
+    titulo: titulo,
+    mensaje: mensaje,
 });
-export const hideWarning = () => ({
-    type: HIDE_WARNING,
-});
-
 export const captureMedia = () => ({
     type: CAPTURE_MEDIA,
 });

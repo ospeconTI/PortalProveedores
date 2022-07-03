@@ -9,11 +9,15 @@ import { input } from "@brunomon/template-lit/src/views/css/input";
 import { select } from "@brunomon/template-lit/src/views/css/select";
 import { check } from "@brunomon/template-lit/src/views/css/check";
 import { button } from "@brunomon/template-lit/src/views/css/button";
-import { spinner } from "@brunomon/template-lit/src/views/css/spinner";
+import { SpinnerControl } from "./spinner";
+import { AlertControl } from "./alert";
+import { showAlert } from "../../redux/ui/actions";
+import { showSpinner } from "../../redux/api/actions";
 
 export class formTest extends connect(store)(LitElement) {
     constructor() {
         super();
+        store.dispatch(showSpinner());
     }
 
     static get styles() {
@@ -23,7 +27,7 @@ export class formTest extends connect(store)(LitElement) {
             ${select}
             ${check}
             ${button}
-            ${spinner}
+
             :host {
                 display: grid;
                 grid-auto-flow: row;
@@ -48,6 +52,7 @@ export class formTest extends connect(store)(LitElement) {
                 align-items: center;
                 align-content: center;
             }
+
             .spinner-container {
                 position: relative;
             }
@@ -80,7 +85,7 @@ export class formTest extends connect(store)(LitElement) {
                 <div class="select">
                     <select id="pais" required>
                         <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="1">Argentina</option>
+                        <option value="1">Argentina qdadsad ad ad ad asdasdasdasdasdasdas asdasdasdasdadasdasasdadas</option>
                         <option value="2">Chile</option>
                         <option value="3">Peru</option>
                         <option value="4">Bolivia</option>
@@ -177,42 +182,46 @@ export class formTest extends connect(store)(LitElement) {
                     <button link>LINK</button>
                     <button link action>LINK ACTION</button>
                     <button link disabled>LINK DISABLED</button>
+                    <div class="inner-grid">
+                        <button link @click="${this.openDialog}">OPEN DIALOG</button>
+                    </div>
                 </div>
             </div>
             <div class="grid fit10">
                 <div class="spinner-container">
                     anillo
-                    <div class="spinner" anillo></div>
+                    <spinner-control anillo></spinner-control>
                 </div>
                 <div class="spinner-container">
                     aro
-                    <div class="spinner" aro></div>
+                    <spinner-control aro></spinner-control>
                 </div>
                 <div class="spinner-container">
                     cometa
-                    <div class="spinner" cometa></div>
+                    <spinner-control cometa></spinner-control>
                 </div>
                 <div class="spinner-container">
                     bloque
-                    <div class="spinner" bloque></div>
+                    <spinner-control bloque></spinner-control>
                 </div>
                 <div class="spinner-container">
                     progress
-                    <div class="spinner" progress></div>
+                    <spinner-control progress></spinner-control>
                 </div>
                 <div class="spinner-container">
                     sonar
-                    <div class="spinner" sonar></div>
+                    <spinner-control sonar></spinner-control>
                 </div>
                 <div class="spinner-container">
                     radar
-                    <div class="spinner" radar></div>
+                    <spinner-control radar></spinner-control>
                 </div>
                 <div class="spinner-container">
                     dado
-                    <div class="spinner" dado></div>
+                    <spinner-control dado></spinner-control>
                 </div>
             </div>
+            <alert-control></alert-control>
         `;
     }
 
@@ -222,6 +231,16 @@ export class formTest extends connect(store)(LitElement) {
     updateProperty(e, field) {
         this.item[field] = e.currentTarget.value;
         this.requestUpdate();
+    }
+
+    openDialog() {
+        store.dispatch(
+            showAlert(
+                html`<p>Este es el titulo</p>`,
+                html`<p>Normalmente con un mensaje</p>
+                    <p>de uno o mas renglones</p>`
+            )
+        );
     }
 
     stateChanged(state, name) {}
