@@ -56,6 +56,7 @@ export class formTest extends connect(store)(LitElement) {
 
             .spinner-container {
                 position: relative;
+                color: var(--on-formulario);
             }
         `;
     }

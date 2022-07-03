@@ -30,3 +30,23 @@ html {
     --on-formulario-bajada: rgba(0, 0, 0, 0.6);
     --velo: rgba(0, 0, 0, 0.32);
 }
+
+@media (prefers-color-scheme: dark) {
+    html {
+        --formulario: #343434;
+        --on-formulario: rgba(255, 255, 255, 0.87);
+        --on-formulario-disabled: rgba(255, 255, 255, 0.38);
+        --on-formulario-separador: rgba(255, 255, 255, 0.12);
+        --on-formulario-bajada: rgba(255, 255, 255, 0.6);
+
+        --aplicacion: #121212;
+        --on-aplicacion: rgba(255, 255, 255, 0.87);
+        --on-aplicacion-disabled: rgba(255, 255, 255, 0.38);
+        --on-aplicacion-separador: rgba(255, 255, 255, 0.12);
+        --on-aplicacion-bajada: rgba(255, 255, 255, 0.6);
+
+        --error: #cf6679;
+
+        --primario: var(--primario10);
+    }
+}
