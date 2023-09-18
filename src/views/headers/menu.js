@@ -10,10 +10,10 @@ import { logo } from "@brunomon/template-lit/src/views/css/logo";
 import { select } from "@brunomon/template-lit/src/views/css/select";
 import { button } from "@brunomon/template-lit/src/views/css/button";
 import { MENU, RIGHT, PERSON } from "../../../assets/icons/svgs";
-import { autorizacion, logout } from "../../redux/autorizacion/actions";
+import { autorizacion } from "../../redux/autorizacion/actions";
 import { gesturesController } from "@brunomon/template-lit/src/views/controllers/gesturesController";
-import { selection } from "../../redux/ui/actions";
 import { set } from "../../redux/miPerfil/actions";
+import { mostrarPrueba, ocultarPrueba, selection } from "../../redux/ui/actions";
 
 const MEDIA_CHANGE = "ui.media.timeStamp";
 const SELECTION = "ui.menu.timeStamp";
@@ -291,6 +291,23 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, SELECTIO
     }
 
     click(e) {
+        if (e.currentTarget.option == "opcion0") {
+            store.dispatch(mostrarPrueba());
+        }
+        if (e.currentTarget.option == "opcion1") {
+            store.dispatch(ocultarPrueba());
+        }
+
+        return;
+
+        if (e.currentTarget.option == "logout") {
+            try {
+                navigator.credentials.preventSilentAccess();
+            } catch {}
+            store.dispatch(logout());
+            return;
+        }
+
         this.selectedOption = new Array(this.optionsCount).fill(false);
         this.selectedOption[Array.from(e.currentTarget.parentNode.children).indexOf(e.currentTarget) - 1] = true;
 

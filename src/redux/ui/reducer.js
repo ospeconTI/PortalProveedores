@@ -1,6 +1,6 @@
 /** @format */
 
-import { SHOW_SPINNER, HIDE_SPINNER, SHOW_ERROR, HIDE_ERROR, SET_MEDIA, SET_MEDIA_ORIENTATION, SELECTION, STEP, SHOW_ALERT, SHOW_CONFIRM } from "./actions";
+import { SHOW_SPINNER, HIDE_SPINNER, SHOW_ERROR, HIDE_ERROR, SET_MEDIA, SET_MEDIA_ORIENTATION, SELECTION, STEP, SHOW_ALERT, SHOW_CONFIRM, MOSTRAR_PRUEBA, OCULTAR_PRUEBA } from "./actions";
 
 const initialState = {
     spinner: {
@@ -36,6 +36,10 @@ const initialState = {
     steps: {
         step: 1,
     },
+    prueba: {
+        timeStamp: null,
+        oculto: true,
+    },
 };
 
 export const reducer = (state = initialState, action) => {
@@ -44,6 +48,14 @@ export const reducer = (state = initialState, action) => {
     };
 
     switch (action.type) {
+        case MOSTRAR_PRUEBA:
+            newState.prueba.timeStamp = new Date().getTime();
+            newState.prueba.oculto = false;
+            break;
+        case OCULTAR_PRUEBA:
+            newState.prueba.timeStamp = new Date().getTime();
+            newState.prueba.oculto = true;
+            break;
         case SHOW_SPINNER:
             newState.spinner.loading += 1;
             break;
