@@ -10,20 +10,32 @@ import { logo } from "@brunomon/template-lit/src/views/css/logo";
 import { select } from "@brunomon/template-lit/src/views/css/select";
 import { button } from "@brunomon/template-lit/src/views/css/button";
 import { MENU, RIGHT, PERSON } from "../../../assets/icons/svgs";
+<<<<<<< HEAD
 import { autorizacion, logout } from "../../redux/autorizacion/actions";
 import { gesturesController } from "@brunomon/template-lit/src/views/controllers/gesturesController";
 import { selection } from "../../redux/ui/actions";
 import { set } from "../../redux/miPerfil/actions";
+=======
+import { logout } from "../../redux/autorizacion/actions";
+import { gesturesController } from "@brunomon/template-lit/src/views/controllers/gesturesController";
+import { selection } from "../../redux/ui/actions";
+>>>>>>> main
 
 const MEDIA_CHANGE = "ui.media.timeStamp";
 const SELECTION = "ui.menu.timeStamp";
 const SCREEN = "screen.timeStamp";
+<<<<<<< HEAD
 const AUTORIZACION_OK = "autorizacion.timeStamp";
 const AUTORIZACION_FALLA = "autorizacion.errorTimeStamp";
 const LOGUEAR = "ui.loguearConNuevoUsuarioTimeStamp";
 const PERFIL_ACTUAL = "miPerfil.timeStamp";
 
 export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION, AUTORIZACION_OK, AUTORIZACION_FALLA, LOGUEAR, PERFIL_ACTUAL)(LitElement) {
+=======
+const USUARIO = "autorizacion.loginTimeStamp";
+
+export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, USUARIO, SELECTION)(LitElement) {
+>>>>>>> main
     constructor() {
         super();
         this.area = "header";
@@ -36,6 +48,7 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, SELECTIO
         this.selectedOption[this.defaultOption] = true;
 
         const gestures = new gesturesController(this, this.gestos);
+<<<<<<< HEAD
         this.profile = "ACCEDER";
         this.popUp = null;
         this.logueado = false;
@@ -67,6 +80,8 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, SELECTIO
             },
             false
         );
+=======
+>>>>>>> main
     }
 
     static get styles() {

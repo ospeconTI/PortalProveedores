@@ -21,7 +21,10 @@ module.exports = merge(common, {
     plugins: [
         new webpack.DefinePlugin({
             SERVICE_URL: JSON.stringify("http://localhost/promocionsocial"),
+<<<<<<< HEAD
             AUTHENTICATION_URL: JSON.stringify("https://fronttest.uocra.net"),
+=======
+>>>>>>> main
         }),
     ],
 });
