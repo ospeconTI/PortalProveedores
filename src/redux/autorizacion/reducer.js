@@ -32,7 +32,6 @@ export const reducer = (state = initialState, action) => {
     };
 
     switch (action.type) {
-<<<<<<< HEAD
         case AUTORIZACION:
             newState.tokenAutentication = action.token;
             break;
@@ -59,32 +58,6 @@ export const reducer = (state = initialState, action) => {
             break;
         case AUTORIZACION_ERROR:
             newState.errorTimeStamp = new Date().getTime();
-=======
-        case LOGIN_SUCCESS_AUTO:
-        case LOGIN_SUCCESS:
-            newState.usuario = action.payload.receive;
-            newState.loginTimeStamp = new Date().getTime();
-            break;
-        case LOGOUT:
-            newState.logoutTimeStamp = new Date().getTime();
-            break;
-        case RENOVACION_SUCCESS:
-            newState.renovacionTimeStamp = new Date().getTime();
-            break;
-        case RECUPERO_SUCCESS:
-            newState.recuperoTimeStamp = new Date().getTime();
-            newState.recuperoMessage = action.payload.receive;
-            break;
-        case LOGON_SUCCESS:
-            newState.logonTimeStamp = new Date().getTime();
-            newState.logonMessage = action.payload.receive;
-            break;
-        case UPDATE_PROFILE_SUCCESS:
-            newState.updateProfileTimeStamp = new Date().getTime();
-            break;
-        case LOGIN_ERROR || RECUPERO_ERROR || RENOVACION_ERROR || UPDATE_PROFILE_ERROR || LOGON_ERROR:
-            newState.commandErrorTimeStamp = new Date().getTime();
->>>>>>> main
             break;
     }
     return newState;
