@@ -19,6 +19,17 @@ export const STEP = "[ui] step";
 export const SHOW_ALERT = "[ui] show alert";
 export const SHOW_CONFIRM = "[ui] show confirm";
 
+export const MOSTRAR_PRUEBA = "[ui] mostrar prueba"
+export const OCULTAR_PRUEBA = "[ui] ocultar prueba"
+
+export const mostrarPrueba = () =>(
+    {type:MOSTRAR_PRUEBA}
+)
+
+export const ocultarPrueba = () =>(
+    {type:OCULTAR_PRUEBA}
+)
+
 export const showSpinner = () => ({
     type: SHOW_SPINNER,
 });
