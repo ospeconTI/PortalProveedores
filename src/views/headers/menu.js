@@ -219,6 +219,12 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, SELECTIO
             *[hidden] {
                 display: none;
             }
+            .logo {
+                height: 7vh;
+                width: 7vh;
+                background-color: var(--on-primario);
+                border-radius: 50%;
+            }
         `;
     }
     render() {
