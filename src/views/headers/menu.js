@@ -10,9 +10,8 @@ import { logo } from "@brunomon/template-lit/src/views/css/logo";
 import { select } from "@brunomon/template-lit/src/views/css/select";
 import { button } from "@brunomon/template-lit/src/views/css/button";
 import { MENU, RIGHT, PERSON } from "../../../assets/icons/svgs";
-import { autorizacion, logout } from "../../redux/autorizacion/actions";
+import { autorizacion } from "../../redux/autorizacion/actions";
 import { gesturesController } from "@brunomon/template-lit/src/views/controllers/gesturesController";
-import { selection } from "../../redux/ui/actions";
 import { set } from "../../redux/miPerfil/actions";
 import { mostrarPrueba, ocultarPrueba, selection } from "../../redux/ui/actions";
 
