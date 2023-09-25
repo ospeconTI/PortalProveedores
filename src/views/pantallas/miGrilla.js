@@ -190,7 +190,7 @@ export class grilla extends connect(store, OCULTAR_SI_NO)(LitElement) {
     }
     render() {
         return html`
-        <div class="solo-grid column template cabecera">
+        <div class="layout column template cabecera">
 
             <div class="cell title" @click="${() => this.sortData('nroOrdenCompras')}">Nro. de Documento de Compras</div>
             <div class="cell title" @click="${() => this.sortData('sociedad')}">Sociedad</div>
@@ -200,10 +200,10 @@ export class grilla extends connect(store, OCULTAR_SI_NO)(LitElement) {
             <div class="cell title" @click="${() => this.sortData('valorTotalEnLiberacion')}">Total en Liberación</div>
             
         </div>
-        <div class="solo-grid items">
+        <div class="layout items">
             ${this.data.map(
             (item) => html`
-                <div class="solo-grid column template">
+                <div class="layout column template">
                     <div class="cell">${item.nroOrdenCompras}</div>
                     <div class="cell">${item.sociedad}</div>
                     <div class="cell">${item.claseDocumentoCompras}</div>
