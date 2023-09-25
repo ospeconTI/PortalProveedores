@@ -8,6 +8,7 @@ import { getLayout } from "../redux/screens/screenLayouts";
 import { goTo } from "../redux/routing/actions";
 import { formTest } from "./componentes/formTest";
 import { pruebaControl } from "./pantallas/prueba";
+import { grilla } from "./pantallas/miGrilla";
 import { menuPrincipal } from "./headers/menu";
 import { spinner } from "@brunomon/template-lit/src/views/css/spinner";
 import { gridLayout } from "@brunomon/template-lit/src/views/css/gridLayout";
@@ -51,6 +52,7 @@ export class viewManager extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION)
                 background: var(--secundario);
                 border-radius: 5px;
             }
+            *[hidden]{display:none}
         `;
     }
 
@@ -58,7 +60,7 @@ export class viewManager extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION)
         return html`
             <div class="spinner" anillo fixed hidden></div>
             <menu-principal area="header"></menu-principal>
-            <prueba-control area="body"></prueba-control>
+            <mi-grilla area="body"></mi-grilla>
         `;
     }
 

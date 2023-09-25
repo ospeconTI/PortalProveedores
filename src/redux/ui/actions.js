@@ -22,12 +22,23 @@ export const SHOW_CONFIRM = "[ui] show confirm";
 export const MOSTRAR_PRUEBA = "[ui] mostrar prueba"
 export const OCULTAR_PRUEBA = "[ui] ocultar prueba"
 
-export const mostrarPrueba = () =>(
-    {type:MOSTRAR_PRUEBA}
+export const MOSTRAR_GRILLA = "[ui] mostrar grilla"
+export const OCULTAR_GRILLA = "[ui] ocultar grilla"
+
+export const mostrarPrueba = () => (
+    { type: MOSTRAR_PRUEBA }
 )
 
-export const ocultarPrueba = () =>(
-    {type:OCULTAR_PRUEBA}
+export const ocultarPrueba = () => (
+    { type: OCULTAR_PRUEBA }
+)
+
+export const mostrarGrilla = () => (
+    { type: MOSTRAR_GRILLA }
+)
+
+export const ocultarGrilla = () => (
+    { type: OCULTAR_GRILLA }
 )
 
 export const showSpinner = () => ({

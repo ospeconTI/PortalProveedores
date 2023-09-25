@@ -13,7 +13,7 @@ import { MENU, RIGHT, PERSON } from "../../../assets/icons/svgs";
 import { autorizacion } from "../../redux/autorizacion/actions";
 import { gesturesController } from "@brunomon/template-lit/src/views/controllers/gesturesController";
 import { set } from "../../redux/miPerfil/actions";
-import { mostrarPrueba, ocultarPrueba, selection } from "../../redux/ui/actions";
+import { mostrarPrueba, ocultarPrueba, selection, mostrarGrilla, ocultarGrilla } from "../../redux/ui/actions";
 
 const MEDIA_CHANGE = "ui.media.timeStamp";
 const SELECTION = "ui.menu.timeStamp";
@@ -292,10 +292,10 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, SELECTIO
 
     click(e) {
         if (e.currentTarget.option == "opcion0") {
-            store.dispatch(mostrarPrueba());
+            store.dispatch(mostrarGrilla());
         }
         if (e.currentTarget.option == "opcion1") {
-            store.dispatch(ocultarPrueba());
+            store.dispatch(ocultarGrilla());
         }
 
         return;
@@ -303,7 +303,7 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, SELECTIO
         if (e.currentTarget.option == "logout") {
             try {
                 navigator.credentials.preventSilentAccess();
-            } catch {}
+            } catch { }
             store.dispatch(logout());
             return;
         }

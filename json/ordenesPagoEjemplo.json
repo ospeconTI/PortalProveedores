@@ -1,0 +1,58 @@
+[
+    {
+        "fechaEmisionOrdenPago": "2023-09-11",
+        "nroOrdenPago": 1,
+        "cantidad": 10,
+        "descripcion": "Monitores",
+        "precioUnitario": 5000
+    },
+    {
+        "fechaEmisionOrdenPago": "2023-09-13",
+        "nroOrdenPago": 2,
+        "cantidad": 5,
+        "descripcion": "Teclados",
+        "precioUnitario": 1000
+    },
+    {
+        "fechaEmisionOrdenPago": "2023-09-12",
+        "nroOrdenPago": 3,
+        "cantidad": 1,
+        "descripcion": "UPS",
+        "precioUnitario": 100000
+    },
+    {
+        "fechaEmisionOrdenPago": "2023-09-05",
+        "nroOrdenPago": 4,
+        "cantidad": 4,
+        "descripcion": "Gabinetes",
+        "precioUnitario": 50000
+    },
+    {
+        "fechaEmisionOrdenPago": "2023-09-18",
+        "nroOrdenPago": 5,
+        "cantidad": 2,
+        "descripcion": "Celulares",
+        "precioUnitario": 100000
+    },
+    {
+        "fechaEmisionOrdenPago": "2023-09-15",
+        "nroOrdenPago": 6,
+        "cantidad": 1,
+        "descripcion": "Resma A4",
+        "precioUnitario": 9000
+    },
+    {
+        "fechaEmisionOrdenPago": "2023-09-17",
+        "nroOrdenPago": 7,
+        "cantidad": 3,
+        "descripcion": "Silla",
+        "precioUnitario": 150000
+    },
+    {
+        "fechaEmisionOrdenPago": "2023-09-16",
+        "nroOrdenPago": 8,
+        "cantidad": 1,
+        "descripcion": "Cajonera",
+        "precioUnitario": 80000
+    }
+]
