@@ -43,6 +43,17 @@ export const screenLayuts = {
         medium: HEADER_BODY,
         large: HEADER_BODY,
     },
+    busquedaGrilla: {
+        small: ALL_BODY,
+        medium: HEADER_BODY,
+        large: HEADER_BODY_FOOT,
+    },
+    listadoFecha: {
+        small: HEADER_BODY,
+        medium: HEADER_BODY,
+        large: HEADER_BODY,
+    },
+
 };
 
 export const getLayout = (state) => {

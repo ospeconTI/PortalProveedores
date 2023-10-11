@@ -242,9 +242,9 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, SELECTIO
 
             <div id="opciones" class="grid column" @click=${this.toggleMenu}>
                 <button raised circle action class="menu-button">${RIGHT}</button>
-                <button link ?selected="${this.selectedOption[0]}" @click=${this.click} .option=${"opcion0"}>Opcion 0</button>
-                <button link ?selected="${this.selectedOption[1]}" @click=${this.click} .option=${"opcion1"}>Opcion 1</button>
-                <button link ?selected="${this.selectedOption[2]}" @click=${this.click} .option=${"opcion2"}>Opcion 2</button>
+               <!--  <button link ?selected="${this.selectedOption[0]}" @click=${this.click} .option=${"opcion0"}>Opcion 0</button> -->
+                <button link ?selected="${this.selectedOption[1]}" @click=${this.click} .option=${"busquedaGrilla"}>busqueda</button>
+                <button link ?selected="${this.selectedOption[2]}" @click=${this.click} .option=${"listadoFecha"}>listado fecha</button>
                 <div id="acceso" ?logueado="${this.logueado}">
                     <button link etiqueta ?selected="${this.selectedOption[2]}" @click=${this.abrir} .option=${"log"}>
                         <div>${PERSON}</div>
@@ -292,23 +292,6 @@ export class menuPrincipal extends connect(store, MEDIA_CHANGE, SCREEN, SELECTIO
     }
 
     click(e) {
-        if (e.currentTarget.option == "opcion0") {
-            store.dispatch(mostrarGrilla());
-            store.dispatch(traerOrden())
-        }
-        if (e.currentTarget.option == "opcion1") {
-            store.dispatch(ocultarGrilla());
-        }
-
-        return;
-
-        if (e.currentTarget.option == "logout") {
-            try {
-                navigator.credentials.preventSilentAccess();
-            } catch { }
-            store.dispatch(logout());
-            return;
-        }
 
         this.selectedOption = new Array(this.optionsCount).fill(false);
         this.selectedOption[Array.from(e.currentTarget.parentNode.children).indexOf(e.currentTarget) - 1] = true;

@@ -9,6 +9,8 @@ import { goTo } from "../redux/routing/actions";
 import { formTest } from "./componentes/formTest";
 import { pruebaControl } from "./pantallas/prueba";
 import { grilla } from "./pantallas/miGrilla";
+import { busquedaGrilla } from "./pantallas/busquedaGrilla";
+import { listadoFecha } from "./pantallas/listadoFecha";
 import { menuPrincipal } from "./headers/menu";
 import { spinner } from "@brunomon/template-lit/src/views/css/spinner";
 import { gridLayout } from "@brunomon/template-lit/src/views/css/gridLayout";
@@ -60,7 +62,10 @@ export class viewManager extends connect(store, MEDIA_CHANGE, SCREEN, SELECTION)
         return html`
             <div class="spinner" anillo fixed hidden></div>
             <menu-principal area="header"></menu-principal>
+            <busqueda-grilla area="body"></busqueda-grilla>
+            <listado-fecha area="body"></listado-fecha>
             <mi-grilla area="body"></mi-grilla>
+            
         `;
     }
 

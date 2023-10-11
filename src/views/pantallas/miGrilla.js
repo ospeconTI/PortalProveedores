@@ -4,14 +4,18 @@ import { html, LitElement, css } from "lit";
 import { store } from "../../redux/store";
 import { connect } from "@brunomon/helpers/connect";
 import { gridLayout } from "@brunomon/template-lit/src/views/css/gridLayout";
-const OCULTAR_SI_NO = "ui.grilla.timeStamp";
-const TRAER_OK = "ordenCompra.timeStamp"
+import { isInLayout } from "../../redux/screens/screenLayouts";
 
-export class grilla extends connect(store, OCULTAR_SI_NO, TRAER_OK)(LitElement) {
+const MEDIA_CHANGE = "ui.media.timeStamp";
+const SCREEN = "screen.timeStamp";
+
+export class grilla extends connect(store, MEDIA_CHANGE, SCREEN)(LitElement) {
     constructor() {
         super();
         this.sortColumn = '';
         this.data = []
+        this.hidden = true;
+        this.area = "body"
 
     }
 
@@ -74,10 +78,12 @@ export class grilla extends connect(store, OCULTAR_SI_NO, TRAER_OK)(LitElement) 
                 border-radius: 5px;
                 background-color: var(--primario);
             }
+            
         `;
     }
     render() {
         return html`
+        
         <div class="layout column template cabecera">
 
             <div class="cell title" @click="${() => this.sortData('nroOrdenCompras')}">Nro. de Documento de Compras</div>
@@ -109,13 +115,135 @@ export class grilla extends connect(store, OCULTAR_SI_NO, TRAER_OK)(LitElement) 
     }
 
     stateChanged(state, name) {
-        if (name == OCULTAR_SI_NO) {
-            this.hidden = state.ui.grilla.oculto;
-            this.update();
-        }
-        if (name == TRAER_OK) {
-            this.data = state.ordenCompra.entities
+        if (name == SCREEN || name == MEDIA_CHANGE) {
+            this.mediaSize = state.ui.media.size;
+            this.hidden = true;
+            this.current = state.screen.name;
+            const haveBodyArea = isInLayout(state, this.area);
+            const SeMuestraEnUnasDeEstasPantallas = "-busquedaGrilla-listadoFecha-".indexOf("-" + state.screen.name + "-") != -1;
+            if (haveBodyArea && SeMuestraEnUnasDeEstasPantallas) {
+                this.hidden = false;
+//agregado para datos
+{
+    this.data = [
+                {
+                    "nroOrdenCompras": "4500000250",
+                    "sociedad": 100,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000102",
+                    "sociedad": 200,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000431",
+                    "sociedad": 500,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000325",
+                    "sociedad": 200,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000611",
+                    "sociedad": 100,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000508",
+                    "sociedad": 100,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000998",
+                    "sociedad": 200,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000250",
+                    "sociedad": 100,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000102",
+                    "sociedad": 200,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000431",
+                    "sociedad": 500,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000325",
+                    "sociedad": 200,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000611",
+                    "sociedad": 100,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000508",
+                    "sociedad": 100,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                {
+                    "nroOrdenCompras": "4500000998",
+                    "sociedad": 200,
+                    "claseDocumentoCompras": "NB",
+                    "nroCuentaProveedor": 1,
+                    "fechaDocumentoCompra": "2023-09-11",
+                    "valorTotalEnLiberacion": 150000
+                },
+                
+    ];
+   
+  }
 
+            }
         }
     }
 

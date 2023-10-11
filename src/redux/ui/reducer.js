@@ -1,6 +1,6 @@
 /** @format */
 
-import { SHOW_SPINNER, HIDE_SPINNER, SHOW_ERROR, HIDE_ERROR, SET_MEDIA, SET_MEDIA_ORIENTATION, SELECTION, STEP, SHOW_ALERT, SHOW_CONFIRM, MOSTRAR_PRUEBA, OCULTAR_PRUEBA, MOSTRAR_GRILLA, OCULTAR_GRILLA } from "./actions";
+import { SHOW_SPINNER, HIDE_SPINNER, SHOW_ERROR, HIDE_ERROR, SET_MEDIA, SET_MEDIA_ORIENTATION, SELECTION, STEP, SHOW_ALERT, SHOW_CONFIRM, MOSTRAR_PRUEBA, OCULTAR_PRUEBA, MOSTRAR_GRILLA, OCULTAR_GRILLA, } from "./actions";
 
 const initialState = {
     spinner: {
@@ -44,6 +44,7 @@ const initialState = {
         timeStamp: null,
         oculto: true,
     },
+
 };
 
 export const reducer = (state = initialState, action) => {
@@ -52,6 +53,7 @@ export const reducer = (state = initialState, action) => {
     };
 
     switch (action.type) {
+
         case MOSTRAR_GRILLA:
             newState.grilla.timeStamp = new Date().getTime();
             newState.grilla.oculto = false;
@@ -109,6 +111,7 @@ export const reducer = (state = initialState, action) => {
         case STEP:
             newState.steps.step = action.step;
             break;
+
     }
     return newState;
 };
