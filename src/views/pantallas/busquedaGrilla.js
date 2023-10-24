@@ -6,6 +6,7 @@ import { input } from "@brunomon/template-lit/src/views/css/input";
 import { button } from "@brunomon/template-lit/src/views/css/button";
 import { gridLayout } from "@brunomon/template-lit/src/views/css/gridLayout";
 import { select } from "@brunomon/template-lit/src/views/css/select";
+import {filtro} from "../../redux/busquedaGrilla/actions"
 
 const MEDIA_CHANGE = "ui.media.timeStamp";
 const SCREEN = "screen.timeStamp";
@@ -15,7 +16,8 @@ export class busquedaGrilla extends connect(store, SCREEN, MEDIA_CHANGE)(LitElem
         super();
         this.area = "body";
         this.inputTipo = "n";
-        this.busquedaPor = "1_n";
+        this.busquedaPor = "nroOrdenCompras";
+        this.buscador = null;
     }
 
     static get styles() {
@@ -44,36 +46,34 @@ export class busquedaGrilla extends connect(store, SCREEN, MEDIA_CHANGE)(LitElem
             <div class="select">
                 <label>Buscar por</label>
                 <select @change=${this.cambioTipoInput}>
-                    <option value="1_n">Documento de compra</option>
-                    <option value="2_l">Sociedad</option>
-                    <option value="3_s">Clase de Documento</option>
-                    <option value="4_n">Nro Proveedor</option>
-                    <option value="5_d">Fecha de compra</option>
-                    <option value="6_n">Total en liberación</option>
+                    <option selected value="nroOrdenCompras_n">Documento de compra</option>
+                    <option value="sociedad_l">Sociedad</option>
+                    <option value="claseDocumentoCompras_s">Clase de Documento</option>
+                    <option value="nroCuentaProveedor_n">Nro Proveedor</option>
+                    <option value="fechaDocumentoCompra_d">Fecha de compra</option>
+                    <option value="valorTotalEnLiberacion_n">Total en liberación</option>
                 </select>
             </div>
             <div class="input" ?hidden=${this.inputTipo != "n"}>
-                <input type="number" />
+                <input id="n" type="number" />
             </div>
             <div class="input" ?hidden=${this.inputTipo != "d"}>
-                <input type="date" />
+                <input id="d" type="date" />
             </div>
             <div class="input" ?hidden=${this.inputTipo != "s"}>
-                <input type="text" />
+                <input id="s" type="text" />
             </div>
             <div class="select" ?hidden=${this.inputTipo != "l"}>
                 <label>Buscar por</label>
-                <select>
-                    <option>100</option>
-                    <option value="2_l">Sociedad</option>
-                    <option value="3_s">Clase de Documento</option>
-                    <option value="4_n">Nro Proveedor</option>
-                    <option value="5_d">Fecha de compra</option>
-                    <option value="6_n">Total en liberación</option>
+                <select id="l">
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="300">400</option>
+                    <option value="400">500</option>
                 </select>
             </div>
 
-            <button class="justify-self-start" flat round>Buscar</button>
+            <button class="justify-self-start" flat round @click=${this.realizarBusqueda}>Buscar</button>
         </div> `;
     }
 
@@ -90,9 +90,16 @@ export class busquedaGrilla extends connect(store, SCREEN, MEDIA_CHANGE)(LitElem
         }
     }
 
+    realizarBusqueda(e) {
+        let controlBusqueda = this.shadowRoot.querySelector("#"+this.inputTipo);
+        let valor = controlBusqueda.value;
+        store.dispatch(filtro(this.busquedaPor,valor))
+       
+    }
+
     cambioTipoInput(e) {
-        this.busquedaPor = e.currentTarget.value;
-        this.inputTipo = this.busquedaPor.split("_")[1];
+        this.busquedaPor = e.currentTarget.value.split("_")[0];
+        this.inputTipo = e.currentTarget.value.split("_")[1];
     }
 
     static get properties() {

@@ -8,12 +8,14 @@ import { isInLayout } from "../../redux/screens/screenLayouts";
 
 const MEDIA_CHANGE = "ui.media.timeStamp";
 const SCREEN = "screen.timeStamp";
+const FILTRO = "busquedaGrilla.filtro.timeStamp"
 
-export class grilla extends connect(store, MEDIA_CHANGE, SCREEN)(LitElement) {
+export class grilla extends connect(store, MEDIA_CHANGE, SCREEN, FILTRO)(LitElement) {
     constructor() {
         super();
         this.sortColumn = '';
         this.data = []
+        this.dataFiltrado = []
         this.hidden = true;
         this.area = "body"
 
@@ -95,7 +97,7 @@ export class grilla extends connect(store, MEDIA_CHANGE, SCREEN)(LitElement) {
             
         </div>
         <div class="layout items">
-            ${this.data.map(
+            ${this.dataFiltrado.map(
             (item) => html`
                 <div class="layout column template">
                     <div class="cell">${item.nroOrdenCompras}</div>
@@ -115,6 +117,13 @@ export class grilla extends connect(store, MEDIA_CHANGE, SCREEN)(LitElement) {
     }
 
     stateChanged(state, name) {
+        if (name == FILTRO){
+            this.dataFiltrado = this.data.filter((registro)=>{
+            return registro[state.busquedaGrilla.filtro.campo] == state.busquedaGrilla.filtro.valor;
+
+            });
+            
+        }
         if (name == SCREEN || name == MEDIA_CHANGE) {
             this.mediaSize = state.ui.media.size;
             this.hidden = true;
@@ -235,7 +244,7 @@ export class grilla extends connect(store, MEDIA_CHANGE, SCREEN)(LitElement) {
                     "sociedad": 200,
                     "claseDocumentoCompras": "NB",
                     "nroCuentaProveedor": 1,
-                    "fechaDocumentoCompra": "2023-09-11",
+                    "fechaDocumentoCompra": "2023-08-11",
                     "valorTotalEnLiberacion": 150000
                 },
                 
@@ -255,7 +264,10 @@ export class grilla extends connect(store, MEDIA_CHANGE, SCREEN)(LitElement) {
             },
             data: { type: Array },
             sortColumn: { type: String },
+            dataFiltrado: { type: Array },
+            
         };
+        
     }
 }
 
